@@ -81,6 +81,12 @@ const buildStartKeyboard = () => ({
   ]]
 });
 
+const buildBackKeyboard = () => ({
+  inline_keyboard: [[
+    { text: "⬅️ Назад", callback_data: "back" }
+  ]]
+});
+
 const sendWelcome = (ctx) => {
   const text =
     "Добро пожаловать в Somon VPN 🇹🇯\n\n" +
@@ -101,12 +107,21 @@ const sendReturn = (ctx) => {
 };
 
 bot.command("privacy", async (ctx) => {
-  return ctx.reply(PRIVACY_TEXT);
+  return ctx.reply(PRIVACY_TEXT, {
+    reply_markup: buildBackKeyboard()
+  });
 });
 
 bot.action("privacy", async (ctx) => {
   await ctx.answerCbQuery();
-  return ctx.reply(PRIVACY_TEXT);
+  return ctx.reply(PRIVACY_TEXT, {
+    reply_markup: buildBackKeyboard()
+  });
+});
+
+bot.action("back", async (ctx) => {
+  await ctx.answerCbQuery();
+  return sendReturn(ctx);
 });
 
 bot.start(async (ctx) => {
