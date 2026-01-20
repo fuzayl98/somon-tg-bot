@@ -77,6 +77,10 @@ const buildStartKeyboard = () => ({
   inline_keyboard: [[
     { text: "🚀 Открыть мини-апп", web_app: { url: "https://somon-app.com" } }
   ], [
+    { text: "📄 Политика обработки данных", url: "https://somon-app.com/privacy-policy" }
+  ], [
+    { text: "📄 Пользовательское соглашение", url: "https://somon-app.com/terms-of-service" }
+  ], [
     { text: "🔒 Политика конфиденциальности", callback_data: "privacy" }
   ]]
 });
